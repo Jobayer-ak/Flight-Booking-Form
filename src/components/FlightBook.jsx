@@ -1,15 +1,16 @@
 /* eslint-disable react/no-unescaped-entities */
+import { useSelector, useDispatch } from 'react-redux';
+import { book } from "../redux/flightBooking/actions.js"
 
 function FlightBook() {
+  //redux hooks
+  const books = useSelector((state) => state);
+  const dispatch = useDispatch();
+
   const destFrom = ['Dhaka', 'Sylhet', 'Saidpur', "Cox's Bazar"];
   const destTo = ['Dhaka', 'Sylhet', 'Saidpur', "Cox's Bazar"];
-  const guests = ["1 Person", "2 Persons", "3 Persons", "4 Persons"];
-  const classM = ["Economic", "Business"];
-
-
-  
-
-
+  const guests = ['1 Person', '2 Persons', '3 Persons', '4 Persons'];
+  const classM = ['Economic', 'Business'];
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,15 +24,13 @@ function FlightBook() {
       if (element.name) {
         formData[element.name] = element.value;
       }
-
     }
-    console.log("form Data: ", formData);
+    // console.log('form Data: ', formData);
+    dispatch(book(formData));
 
-    
- 
-  }
+  };
 
-
+  console.log("stored data: ", books);
 
   return (
     // input
@@ -116,7 +115,9 @@ function FlightBook() {
                   Please Select
                 </option>
                 {guests?.map((g, index) => (
-                  <option value={g} key={index}>{g}</option>
+                  <option value={g} key={index}>
+                    {g}
+                  </option>
                 ))}
               </select>
             </div>
@@ -137,7 +138,9 @@ function FlightBook() {
                   Please Select
                 </option>
                 {classM?.map((c, index) => (
-                  <option value={c} key={index}>{c}</option>
+                  <option value={c} key={index}>
+                    {c}
+                  </option>
                 ))}
               </select>
             </div>

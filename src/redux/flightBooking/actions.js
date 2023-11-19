@@ -1,16 +1,16 @@
 import { BOOK, DELETE } from "./actionTypes"
 
 
-export const book = (info) => {
+export const book = (value) => {
     return {
         type: BOOK,
-        payload: info,
+        payload: value,
     }
 };
 
-export const deleteBooking = (info) => {
+export const deleteBooking = (id) => {
     return {
         type: DELETE,
-        payload: info,
+        id: id,
     }
 }
