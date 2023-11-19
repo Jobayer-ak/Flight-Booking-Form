@@ -3,12 +3,39 @@
 function FlightBook() {
   const destFrom = ['Dhaka', 'Sylhet', 'Saidpur', "Cox's Bazar"];
   const destTo = ['Dhaka', 'Sylhet', 'Saidpur', "Cox's Bazar"];
+  const guests = ["1 Person", "2 Persons", "3 Persons", "4 Persons"];
+  const classM = ["Economic", "Business"];
+
+
+  const info = [];
+
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // console.log(e.target.elements.from.value);
+    const formElement = e.target;
+    const formData = {};
+
+    for (let i = 0; i < formElement.elements.length; i++) {
+      const element = formElement.elements[i];
+
+      if (element.name) {
+        formData[element.name] = element.value;
+      }
+
+      console.log("form Data: ", formData);
+    }
+ 
+  }
+
+
 
   return (
     // input
     <div className="mt-[160px] mx-4 md:mt-[160px] relative">
       <div className="bg-white rounded-md max-w-6xl w-full mx-auto">
-        <form className="first-hero lws-inputform">
+        <form className="first-hero lws-inputform" onSubmit={handleSubmit}>
           {/* From */}
           <div className="des-from">
             <p>Destination From</p>
@@ -86,10 +113,9 @@ function FlightBook() {
                 <option value="" hidden>
                   Please Select
                 </option>
-                <option value="1">1 Person</option>
-                <option value="2">2 Persons</option>
-                <option value="3">3 Persons</option>
-                <option value="4">4 Persons</option>
+                {guests?.map((g, index) => (
+                  <option value={g} key={index}>{g}</option>
+                ))}
               </select>
             </div>
           </div>
@@ -108,8 +134,9 @@ function FlightBook() {
                 <option value="" hidden>
                   Please Select
                 </option>
-                <option>Business</option>
-                <option>Economy</option>
+                {classM?.map((c, index) => (
+                  <option value={c} key={index}>{c}</option>
+                ))}
               </select>
             </div>
           </div>
