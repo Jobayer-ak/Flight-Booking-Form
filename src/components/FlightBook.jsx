@@ -7,7 +7,7 @@ function FlightBook() {
   const classM = ["Economic", "Business"];
 
 
-  const info = [];
+  
 
 
 
@@ -24,8 +24,10 @@ function FlightBook() {
         formData[element.name] = element.value;
       }
 
-      console.log("form Data: ", formData);
     }
+    console.log("form Data: ", formData);
+
+    
  
   }
 
