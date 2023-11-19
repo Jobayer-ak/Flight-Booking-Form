@@ -22,10 +22,8 @@ const flightReducer = (state = initialState, action) => {
             
 
         case DELETE:
-            return {
-                ...state,
-                value: {}
-            }
+            const updateState = copiedState.filter(book => book.id !== id);
+            return updateState;
         
         default:
             return state;
