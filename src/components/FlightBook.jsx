@@ -57,10 +57,7 @@ function FlightBook() {
                     {d}
                   </option>
                 ))}
-                {/* <option>Dhaka</option>
-               <option>Sylhet</option>
-               <option>Saidpur</option>
-               <option>Cox's Bazar</option> */}
+                
               </select>
             </div>
           </div>
